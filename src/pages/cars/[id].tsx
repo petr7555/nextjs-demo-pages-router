@@ -30,12 +30,22 @@ export default function Cars({ car }: Props) {
   );
 }
 
+// export async function getServerSideProps({ params: { id } }: { params: { id: string } }) {
+//   const req = await fetch(`http://localhost:3000/${id}.json`);
+//   const data = await req.json();
+//
+//   return {
+//     props: { car: data },
+//   };
+// }
+
 export async function getStaticProps({ params: { id } }: { params: { id: string } }) {
   const req = await fetch(`http://localhost:3000/${id}.json`);
   const data = await req.json();
 
   return {
     props: { car: data },
+    revalidate: 30, // ISR - rebuild at most every 30 seconds
   };
 }
 
