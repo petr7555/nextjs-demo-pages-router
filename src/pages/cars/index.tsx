@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import CarLink from '@/pages/cars/CarLink';
 
 type Props = {
   carIds: string[];
@@ -11,16 +11,13 @@ export default function Cars({ carIds }: Props) {
         Cars list
       </h1>
       {carIds.map((id) => (
-        <div key={id}>
-          <Link key={id} href={`/cars/${id}`}>
-            {id}
-          </Link>
-        </div>
+        <CarLink key={id} id={id}/>
       ))}
     </>
   );
 }
 
+/* SSG */
 export async function getStaticProps() {
   const res = await fetch('http://localhost:3000/cars.json');
   const data = await res.json();

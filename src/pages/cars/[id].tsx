@@ -11,7 +11,7 @@ type Props = {
   car: Car;
 }
 
-export default function Cars({ car }: Props) {
+export default function Car({ car }: Props) {
   const router = useRouter();
   const { id } = router.query as { id: string };
 
@@ -30,6 +30,7 @@ export default function Cars({ car }: Props) {
   );
 }
 
+/* SSR */
 // export async function getServerSideProps({ params: { id } }: { params: { id: string } }) {
 //   const res = await fetch(`http://localhost:3000/${id}.json`);
 //   const data = await res.json();
@@ -39,6 +40,7 @@ export default function Cars({ car }: Props) {
 //   };
 // }
 
+/* SSG */
 export async function getStaticProps({ params: { id } }: { params: { id: string } }) {
   const res = await fetch(`http://localhost:3000/${id}.json`);
   const data = await res.json();
@@ -49,6 +51,7 @@ export async function getStaticProps({ params: { id } }: { params: { id: string 
   };
 }
 
+/* SSG */
 export async function getStaticPaths() {
   const res = await fetch('http://localhost:3000/cars.json');
   const data = await res.json();
