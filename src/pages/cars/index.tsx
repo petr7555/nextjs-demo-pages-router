@@ -22,8 +22,8 @@ export default function Cars({ carIds }: Props) {
 }
 
 export async function getStaticProps() {
-  const req = await fetch('http://localhost:3000/cars.json');
-  const data = await req.json();
+  const res = await fetch('http://localhost:3000/cars.json');
+  const data = await res.json();
 
   return {
     props: { carIds: data },

@@ -31,8 +31,8 @@ export default function Cars({ car }: Props) {
 }
 
 // export async function getServerSideProps({ params: { id } }: { params: { id: string } }) {
-//   const req = await fetch(`http://localhost:3000/${id}.json`);
-//   const data = await req.json();
+//   const res = await fetch(`http://localhost:3000/${id}.json`);
+//   const data = await res.json();
 //
 //   return {
 //     props: { car: data },
@@ -40,8 +40,8 @@ export default function Cars({ car }: Props) {
 // }
 
 export async function getStaticProps({ params: { id } }: { params: { id: string } }) {
-  const req = await fetch(`http://localhost:3000/${id}.json`);
-  const data = await req.json();
+  const res = await fetch(`http://localhost:3000/${id}.json`);
+  const data = await res.json();
 
   return {
     props: { car: data },
@@ -50,8 +50,8 @@ export async function getStaticProps({ params: { id } }: { params: { id: string 
 }
 
 export async function getStaticPaths() {
-  const req = await fetch('http://localhost:3000/cars.json');
-  const data = await req.json();
+  const res = await fetch('http://localhost:3000/cars.json');
+  const data = await res.json();
 
   const paths = data.map((id: string) => {
     return { params: { id } };
