@@ -1,4 +1,4 @@
-import CarLink from '@/pages/cars/CarLink';
+import CarLink from '@/components/CarLink';
 
 type Props = {
   carIds: string[];
@@ -17,9 +17,19 @@ export default function Cars({ carIds }: Props) {
   );
 }
 
+/* SSR */
+// export async function getServerSideProps() {
+//   const res = await fetch('http://0.0.0.0:3000/cars.json');
+//   const data = await res.json();
+//
+//   return {
+//     props: { carIds: data },
+//   };
+// }
+
 /* SSG */
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/cars.json');
+  const res = await fetch('http://0.0.0.0:3000/cars.json');
   const data = await res.json();
 
   return {
